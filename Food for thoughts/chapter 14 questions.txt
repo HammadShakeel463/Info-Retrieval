@@ -1,0 +1,31 @@
+Q14.1: For small areas, distances on the surface of the hypersphere are approximated well by distances on its projection (Figure 14.2) because α ≈ sin α for small angles. For what size angle is the distortion α/ sin(α) (i) 1.01, (ii) 1.05 and (iii) 1.1?
+
+Ans : For smallθ,sinθ(chord or projection distance) is well approximated byθ(arcdistance). This follows from the McLaurin series for sinθ.(In fact if you look at the next few terms you can bound the error from bothsides because the McLaurin approximation is a bracketing series.)
+
+Q14.2 : Show that Rocchio classification can assign a label to a document that is different from its training set label.
+Ans: See homework3 solution 
+
+Q14.3: Explain why kNN handles multimodal classes better than Rocchio.
+
+Ans: kNN requires no explicit training and can use the unprocessed training set directly in classification. It is less efficient than other classification methods in classifying documents. If the training set is large, then kNN can handle non-spherical and other complex classes better than Rocchio.
+In case of multimodal class, the continguity hypothesis, which the Rocchio classification assumes, does not hold. The class is spread in different clustersand hence the kNN works well as it labels documents by the documents in the closest proximity and does not calculate a global centroid for the clusters.
+
+Q14.4 Prove that the number of linear separators of two classes is either infinite or zero.
+Ans. Suppose we have two classes of data points in a two-dimensional space: Class A and Class B. The goal is to find a linear separator, such as a straight line, that can perfectly separate the two classes. A linear separator divides the space into two regions, one for each class, such that all points in Class A are on one side of the separator, and all points in Class B are on the other side.
+
+Now, let's consider two scenarios:
+
+Infinite linear separators:
+If the two classes are linearly separable, it means there exists at least one straight line that can separate the two classes perfectly. However, it's important to note that there are infinitely many possible lines that can achieve this separation. For example, if a line separates the two classes, any line parallel to it will also separate the classes. Therefore, in the case of linear separability, there are an infinite number of possible linear separators.
+
+Zero linear separators:
+If the two classes are not linearly separable, it means there is no straight line that can separate the two classes perfectly. In other words, it is impossible to find a single straight line that places all points of Class A on one side and all points of Class B on the other side. In this case, the number of linear separators is zero.
+
+Q14.6: In Figure 14.14, which of the three vectors~a,~b, and~c is (i) most similar to ~x according to dot product similarity, (ii) most similar to ~x according to cosine similarity, (iii) closest to ~x according to Euclidean distance?
+Ans. See Homework
+
+Q14.7: check solution book 
+
+
+
+

@@ -1,0 +1,59 @@
+Q1. Illustrate the difference between Text and Data Mining. 
+Data mining :
+1. Data mining is the process of finding patterns and extracting useful data from large data sets
+2. The data is stored in an structured format. 
+3. Pre-existing databases and spreadsheets are used to gather information.
+4. It is used in fields like marketing, medicine, healthcare.
+
+Text mining :
+1. Text mining is basically an artificial intelligence technology that involves processing the data from various text documents.
+2. The data is stored in an unstructured format. 
+3. The text is used to gather high quality information.
+4. It is used in fields like bioscience and customer profile analysis.
+
+Q2. What is the difference between data and information and knowledge?
+Data in their simplest form consist of raw alphanumeric values. Information is created when data are processed, organized, or structured to provide context and meaning. Information is essentially processed data. Knowledge is what we know.
+
+Q3. What do we mean by "Information Retrieval-IR"? give an example of IR task.
+What are the different components of it? 
+
+Information Retrieval (IR) can be defined as a software program that deals with the organization, storage, retrieval, and evaluation of information from document repositories, particularly textual information. Information Retrieval is the activity of obtaining material that can usually be documented on an unstructured nature
+Three major components of Traditional IRS
+1. Document subsystem
+	a) Acquisition
+	b) Representation
+	c) File organization
+2. User sub system
+	a) Problem
+	b) Representation
+	c) Query
+3. Searching /Retrieval subsystem
+	a) Matching
+	b) Retrieved objects
+example :
+One of the popular and widely used Information Retrieval implementations is a search engine like Google, Bing, and DuckDuckGo.
+
+Q4. What do we mean by Effectiveness of IR? How it is measured? 
+the ability of the system to retrieve relevant documents while at the same time suppressing the retrieval of non-relevant documents.
+The two most frequent and basic measures for information retrieval effectiveness are precision and recall
+precision = no. of relevent documents retrived / total retrieved items
+recall = no. of relevent documents retrived / total no. of relevent documents
+
+Q5. Why Precision and Recall both are required for understanding the effectiveness of
+an IR Systems? 
+Precision and recall are the measures used in the information retrieval domain to measure how well an information retrieval system retrieves the relevant documents requested by a user.
+
+Q6. What is Adhoc information retrieval?
+Standard retrieval task in which the user specifies his information need through a query which initiates a search (executed by the information system) for documents which are likely to be relevant to the user.
+The most popular example of ad-hoc retrieval is the Internet search engine.
+
+Q7. What are the best features of WESTLAW -Commercial Boolean Retrieval
+systems? What are some of it draw backs? 
+Terms and Connectors is a Boolean search method in Westlaw Edge. You can search for particular terms or retrieve all documents containing your search terms.
+You can use the Terms and Connectors search method to enter a key terms from your issue. Additionally, you can use connectors to specify the relationships between those terms.
+Disadvantage :
+a) Difficult to rank output
+
+b) Difficult to process a query
+
+c) It is one of the complex retrieval models

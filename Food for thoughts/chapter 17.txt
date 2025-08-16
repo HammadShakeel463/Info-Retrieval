@@ -1,0 +1,21 @@
+1. Hierarchical clustering algorithms are either top-down or bottom-up. Bottomup algorithms treat each document as a singleton cluster at the outset and then successively merge (or agglomerate) pairs of clusters until all clusters have been merged into a single cluster that contains all documents. Bottom up hierarchical clustering is therefore called hierarchical agglomerative clustering or HAC. Top-down clustering requires a method for splitting a cluster. It proceeds by splitting clusters recursively until individual documents are reached.
+
+2. A fundamental assumption in HAC is that the merge operation is monotonic. Monotonic means that if s1,s2, . . . ,sK−1 are the combination similarities of the successive merges of an HAC, then s1 ≥ s2 ≥ . . . ≥ sK−1 holds. A nonmonotonic hierarchical clustering contains at least one inversion si < si+1 and contradicts the fundamental assumption that we chose the best merge available at each step.
+
+3. In single-link clustering or single-linkage clustering, the similarity of two clusters is the similarity of their most similar members.
+
+4. In complete-link clustering or complete-linkage clustering, the similarity of two clusters is the similarity of their most dissimilar members
+
+5.  A connected component is a maximal set of connected points such that there is a path connecting each pair. A clique is a set of points that are completely linked with each other.
+
+6.  Group-average agglomerative clustering or GAAC evaluates cluster quality based on all similarities between documents, thus avoiding the pitfalls of the single-link and complete-link criteria, which equate cluster similarity with the similarity of a single pair of documents.
+
+7. Differential cluster labeling selects cluster labels by comparing the distribution of terms in one cluster with that of other clusters
+
+8. Cluster-internal labeling computes a label that solely depends on the cluster itself, not on other clusters.
+
+
+
+
+
+

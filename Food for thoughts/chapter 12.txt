@@ -1,0 +1,26 @@
+Q1. Define a language model for IR
+Ans. In information retrieval (IR), a language model is a statistical model that captures the distribution of words and phrases in a collection of documents. 
+A language model for IR can be defined as follows:
+Given a query q and a set of documents D, the language model estimates the probability distribution of the query q over the vocabulary V of the documents. The probability distribution can be computed using different statistical techniques, such as the maximum likelihood estimation (MLE) or the Bayesian estimation.
+
+Q2.  Consider making a language model from the following training text:
+ the martian has landed on the latin pop sensation ricky martin
+a. Under a MLE-estimated unigram probability model, what are P(the) and
+P(martian)?
+b. Under a MLE-estimated bigram model, what are P(sensation|pop) and
+P(pop|the)? 
+Ans. 	a. P(the) = 2/11, P(martian) = 1/11
+	b. P(sensation|pop) = 1, P(pop|the) = 0 
+	no of times pop sensation appears / no of times pop apears = 1 / 1
+	similarly no. of times the pop appears / no. of times the appears = 0 / 2
+
+Q3. How Ponte and Croft experiments differentiate between different models of IR? 
+Ans. Ponte and Croft (1998) conducted experiments to compare different models of Information Retrieval (IR) including the Vector Space Model (VSM), the Probabilistic Model (PM), and the Language Model (LM). They tested these models on different tasks including query formulation and document ranking, and compared their performance using different query expansion techniques and ranking strategies. The experiments showed that each model has its strengths and weaknesses, and the choice of model depends on the specific requirements of the application. The experiments highlighted the importance of evaluating IR models on multiple tasks and using different evaluation metrics to obtain a comprehensive understanding of their performance.
+
+Q4.  What are some of the problem of language model if we estimate document likelihood for a query? Illustrate with some arguments
+Ans. One problem with estimating document likelihood for a query using a language model is that it assumes term independence, which may not always hold. For example, the query "New York City" may retrieve irrelevant documents that contain individual terms "New," "York," and "City" but not in the intended context.
+
+Another issue is query sparsity, which can lead to a poor estimation of the language model. If a query has only a few terms, the model may not be able to capture the intended meaning, resulting in relevant documents being excluded from the search results.
+
+Finally, the language model may suffer from contextual ambiguity, where a term can have multiple meanings in different contexts. For instance, the term "Java" can refer to the programming language or the island in Indonesia. The model may not be able to disambiguate the meaning of the term, leading to irrelevant documents being retrieved.
+

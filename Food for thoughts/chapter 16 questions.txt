@@ -1,0 +1,27 @@
+Q16.1 :Define two documents as similar if they have at least two proper names like Clinton or Sarkozy in common. Give an example of an information need and two documents, for which the cluster hypothesis does not hold forthis notion of similarity. 
+Ans: Information Need: The information need is to find documents about different historical events.
+
+Document 1:
+Title: "World War II and the Role of Winston Churchill"
+Content: This document provides an in-depth analysis of World War II, focusing on the role played by Winston Churchill, the Prime Minister of the United Kingdom during that time. It discusses his strategies, speeches, and influence on the outcome of the war.
+
+Document 2:
+Title: "The French Revolution and Napoleon Bonaparte"
+Content: This document explores the French Revolution, its causes, key events, and the rise of Napoleon Bonaparte, a prominent military and political leader of that era. It delves into his reforms, military campaigns, and impact on European history.
+
+In this example, both documents are about significant historical events, but they do not share any common proper names like "Clinton" or "Sarkozy." However, they are still relevant to the information need of understanding different historical events. The cluster hypothesis, which assumes similarity based on shared proper names, does not hold in this case.
+
+
+Q16.3 :
+ans : see homework 
+
+Q16.6: We saw above that the time complexity of K-means is Θ(IKNM). What is the time complexity of EM?
+ans : Overall, the time complexity of the EM algorithm can be expressed as Θ(IKNM),
+
+Q16.13 , 16.17 , 16.20 : 
+ans: see homework 
+
+
+
+
+

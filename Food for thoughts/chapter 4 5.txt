@@ -1,0 +1,141 @@
+Qno1: What are the problems with traditional inverted index approach introduced in
+chapter 1? Illustrate them. 
+
+Term mismatch: The traditional approach treats each word as an independent term, without accounting for variations in spelling, morphology, or meaning. This can result in term mismatch, where queries and documents that are related but have different spellings or meanings are not matched. For example, a query for "running shoes" may not match documents that mention "runners" or "sneakers".
+
+Stopword filtering: The traditional approach often filters out common words such as "the", "a", and "is" as stopwords, on the assumption that they are not informative for retrieval. However, this can sometimes result in important context words being removed, leading to reduced recall and relevance of search results.
+
+Boolean retrieval: The traditional approach relies on Boolean retrieval models, where queries are expressed as Boolean combinations of terms (e.g., "running AND shoes"). However, this approach may not be intuitive or effective for users who may not know the exact terms to use or who may be interested in related concepts or topics.
+
+Ranking and relevance: The traditional approach does not provide a way to rank documents by relevance or to consider other factors such as query term frequency or document quality. This can result in search results that are not well-ordered by relevance or usefulness.
+For example, consider a traditional inverted index built on a set of documents about cars. A query for "automobiles" may not match documents that use the term "cars", "vehicles" or "autos".
+
+Qno2: How Block-Sort Based Indexing(BSBI) gain advantages over traditional inverted
+indexing approach? 
+Block-Sort Based Indexing (BSBI) is a technique for creating an index of terms found in a set of documents. It was developed in the 1970s as a way to overcome some of the limitations of traditional inverted indexing.
+
+The BSBI algorithm works by dividing the corpus of documents into smaller blocks, which can fit into memory. Each block is then sorted and indexed independently. The resulting indexes for each block are then merged to create a global index.
+
+The BSBI algorithm has several advantages over traditional inverted indexing. First, it is faster because it processes the corpus in smaller blocks rather than all at once. Second, it requires less memory because it only needs to keep a smaller block of documents in memory at any given time. Third, it can be easily parallelized because each block can be processed independently on a separate machine. Finally, it is simple to implement because it doesn't require complex data structures or algorithms.
+
+One potential disadvantage of BSBI is that it may produce a less accurate index than traditional inverted indexing because it does not consider the global frequency of terms. However, this can be mitigated by using techniques such as document frequency pruning or collecting statistics during the merging phase.
+
+Qno3:What are some of the drawbacks on BSBI? 
+
+Limited support for phrase queries: BSBI creates an index for individual terms in a corpus, which means it does not natively support phrase queries
+Inefficient use of disk space
+Need for sorting: The BSBI algorithm relies on sorting each block of documents before creating an index.
+Challenges with incremental updates: BSBI is designed to create an index for a static corpus of documents. If new documents are added or existing documents are updated, the entire corpus needs to be re-indexed, which can be time-consuming and computationally expensive.
+Requires a lexicon: To search a BSBI index, a lexicon (i.e., a dictionary of terms and their associated postings) is needed
+
+Qno4: How would you create the dictionary in blocked sort-based indexing on the fly to
+avoid an extra pass through the data? 
+
+In Block-Sort Based Indexing (BSBI), creating a dictionary (also known as a lexicon) is an important step in the indexing process. The dictionary is a data structure that stores a mapping between terms and the postings that contain those terms. Traditionally, creating a dictionary requires an extra pass through the data after the blocks have been sorted and merged. However, it is possible to create the dictionary on-the-fly during the merging phase, which can save time and reduce the I/O overhead of creating the index.
+
+To create the dictionary on-the-fly in BSBI, one approach is to use a hash table to store the term-posting mappings. As the blocks are merged, the postings for each term are added to the hash table. If a term already exists in the hash table, the postings for that term are appended to the existing postings list.
+
+Once the merging is complete, the hash table can be converted into an array and sorted by term to create the final dictionary. This can be done using an in-memory sort algorithm, such as quicksort or mergesort, since the size of the hash table is relatively small compared to the entire corpus.
+
+Creating the dictionary on-the-fly has several advantages. It eliminates the need for an extra pass through the data to create the dictionary, which can reduce the I/O overhead and speed up the indexing process. It also reduces the amount of memory needed during the merging phase, since the hash table can be sized appropriately to fit within available memory.
+
+However, creating the dictionary on-the-fly can also have some disadvantages. The use of a hash table can introduce some overhead due to collisions and the need for hash function computation. Additionally, if the hash table becomes too large, it may no longer fit in memory, which can cause performance issues. To address these issues, techniques like dynamic resizing or using a hybrid approach (e.g., creating the dictionary on-the-fly for small blocks but using a separate pass for larger blocks) may be employed.
+
+Qno5: Explain how Single-Pass In Memory Indexing(SPIMI) gain advantages over
+BSBI?
+Single-Pass In-Memory Indexing (SPIMI) is a technique for creating an index of terms found in a set of documents that is an alternative to Block-Sort Based Indexing (BSBI). SPIMI is a memory-based approach that builds an index in a single pass through the documents. Here are some advantages that SPIMI has over BSBI:
+
+No disk I/O: Since SPIMI builds the index in memory, it does not require any disk I/O operations during the indexing process. This can make the indexing process much faster than BSBI, which needs to perform disk I/O operations to sort and merge blocks of documents.
+
+Faster processing: SPIMI is faster than BSBI because it processes the documents in a single pass. In contrast, BSBI processes the documents in multiple passes, which can slow down the indexing process.
+
+Simpler to implement: SPIMI is simpler to implement than BSBI because it does not require sorting or merging of blocks of documents. Instead, it builds the index in a single pass by iterating over the documents and adding them to the index.
+
+Better suited for small to medium-sized collections: SPIMI is better suited for small to medium-sized collections of documents because it builds the index in memory. In contrast, BSBI is better suited for large collections of documents because it can handle larger collections by partitioning them into blocks.
+
+Supports phrase queries: SPIMI can easily support phrase queries because it builds an index that maintains the positional information of terms within documents. This makes it easier to perform phrase queries that require the order of terms to be preserved.
+
+Qno6: Compare SPIMI and BSBI in term of time complexities
+SPIMI:
+
+Document parsing: O(n), where n is the total number of terms in the document collection.
+Index creation: O(n), where n is the total number of terms in the document collection.
+Index lookup: O(1) on average, assuming a well-designed hash table or other data structure is used for the index.
+BSBI:
+
+Block creation: O(b * log b), where b is the size of each block, and log b is the time required to sort the block.
+Block merging: O(N * log b), where N is the total number of blocks and log b is the time required to merge two blocks.
+Index creation: O(N * b * log b), where N is the total number of blocks and b is the size of each block.
+Index lookup: O(log n) on average, assuming a well-designed data structure is used for the index.
+
+Qno7: Compare the differences between Block-Sort Based Indexing(BSBI) and SinglePass In Memory Indexing(SPIMI) 
+0. Memory usage: BSBI uses external memory to store the index, while SPIMI uses internal memory. BSBI divides the document collection into blocks and sorts them before merging them to create the final index. This requires the use of external memory to store the blocks during the sorting and merging phases. In contrast, SPIMI builds the index in internal memory, which can be more efficient for smaller document collections.
+
+1. Disk I/O: BSBI requires disk I/O operations to read and write the blocks to external memory during the sorting and merging phases. This can slow down the indexing process, especially for large document collections. SPIMI, on the other hand, does not require any disk I/O operations since it builds the index in internal memory.
+
+2. Processing speed: SPIMI is generally faster than BSBI because it processes the documents in a single pass, while BSBI processes them in multiple passes. Additionally, SPIMI can be faster than BSBI for smaller document collections because it does not require the sorting and merging of blocks.
+
+3. Implementation complexity: SPIMI is simpler to implement than BSBI because it does not require the sorting and merging of blocks. Instead, it builds the index in a single pass by iterating over the documents and adding them to the index. BSBI, on the other hand, requires more complex implementation due to the need to sort and merge blocks.
+
+4. Index compression: BSBI typically uses compression techniques, such as variable byte encoding, to reduce the size of the index on disk. SPIMI, on the other hand, may not require compression if the index fits entirely in memory.
+
+Qno8: State Heaps Law? Explain its importance in IR.
+Heap's Law is an empirical law in natural language processing that describes the relationship between the size of a vocabulary and the size of the document collection in which the vocabulary appears. Specifically, Heap's Law states that the vocabulary size V of a document collection is proportional to the square root of the total number of unique words T in the collection:
+
+V = k * T^b
+
+where k and b are constants that depend on the language and the characteristics of the document collection.
+
+Heap's Law is important in information retrieval because it provides insights into the behavior of vocabulary growth in a document collection. By estimating the values of k and b, we can predict the expected vocabulary size for a given document collection size, which can inform the design of indexing and search algorithms.
+
+One implication of Heap's Law is that as the size of the document collection grows, the rate of vocabulary growth slows down. This means that the marginal benefit of adding more documents to a collection decreases over time. Therefore, it may be more efficient to focus on improving the quality of the existing documents or adding more targeted documents instead of trying to grow the collection indefinitely.
+
+Heap's Law also suggests that stopword lists and stemming algorithms can be effective at reducing the size of the vocabulary without significantly affecting the quality of search results. By removing common words (stopwords) and reducing words to their base form (stemming), we can reduce the vocabulary size while retaining the important semantic information in the documents. This can improve the efficiency of indexing and search algorithms by reducing the amount of memory and computation required.
+
+Qno9: State Zipf’s Law? Explain its importance in IR. 
+
+Zipf's Law is an empirical law in natural language processing that describes the relationship between the frequency of a word in a document collection and its rank in the frequency distribution. Specifically, Zipf's Law states that the frequency of a word is proportional to its rank raised to a negative power:
+
+f(w) ~ 1/rank(w)^α
+
+where f(w) is the frequency of word w, rank(w) is the rank of word w in the frequency distribution, and α is a constant that typically falls in the range 0.7-1.2.
+
+Zipf's Law is important in information retrieval because it provides insights into the distribution of word frequencies in a document collection. By analyzing the frequency distribution, we can identify the most common words (e.g., stopwords) and the rarest words in the collection. This information can inform the design of indexing and search algorithms.
+
+One implication of Zipf's Law is that a small number of words account for a large proportion of the occurrences in a document collection, while the majority of words occur infrequently. This means that stopwords and other common words can be ignored or treated differently in indexing and search algorithms without significantly affecting the quality of search results. Additionally, it suggests that techniques such as query expansion, which aim to increase recall by adding synonyms or related terms to the query, may be less effective than other methods since the most common terms are already well-represented in the collection.
+
+Zipf's Law also suggests that some words may be more informative than others for information retrieval. For example, rare words or words that occur in specific contexts may be more important for distinguishing between relevant and irrelevant documents than common words. This insight can inform the design of relevance models that weight terms based on their frequency and distribution in the document collection.
+
+Qno10: How Heap’s Law and Zipf’s Law are related? 
+
+While Heap's Law and Zipf's Law describe different aspects of word occurrences in text, they are related in that they both capture the idea that a small number of words are very common and account for a large proportion of the total number of occurrences, while the majority of words are rare and occur infrequently. In other words, Zipf's Law captures the "long tail" of the word frequency distribution, while Heap's Law captures the overall size of the vocabulary required to represent the entire collection.
+
+Overall, both laws are important for understanding the characteristics of natural language text and informing the design of indexing and search algorithms in information retrieval.
+
+Qno11: Why compression is important for dictionary and posting list together?
+Compression is important for the dictionary and posting list together in order to reduce the storage space required to represent the index. The dictionary and posting list contain the terms and their associated document identifiers and term frequencies, respectively. In a large document collection, the dictionary and posting list can become very large, especially if the collection contains a large number of distinct terms.
+
+Compression techniques can be applied to the dictionary and posting list to reduce the amount of storage space required to represent the index without sacrificing retrieval effectiveness. Compression can be achieved using various techniques such as delta encoding, variable byte encoding, and byte-aligned compression.
+
+Reducing the size of the index can have several benefits. First, it reduces the amount of disk space required to store the index, which can be a significant cost for large-scale retrieval systems. Second, it can reduce the amount of time required to load the index into memory, which can improve query processing efficiency. Finally, it can also reduce the amount of time required to transmit the index over a network, which can be important for distributed retrieval systems.
+
+Overall, compression is an important technique for reducing the storage space required to represent the index while maintaining retrieval effectiveness.
+
+Qno12: Given a dataset for the IR? How would you estimate the dictionary size and
+posting size? If it is known that it is a collection of English short stories, how
+would you justify the estimates? 
+
+To estimate the dictionary size and posting size for a dataset in information retrieval, we can use statistical analysis of the text data. Here is a general approach:
+
+Tokenize the text data: Split the text into individual words or tokens. This can be done using various techniques, such as regular expressions or natural language processing tools.
+
+Count the frequency of each token: For each token, count the number of occurrences in the dataset. This will give us the term frequency (TF) for each term.
+
+Sort the terms by frequency: Sort the terms in descending order of frequency. This will give us the term frequency distribution.
+
+Estimate the vocabulary size: Plot the term frequency distribution on a log-log scale. The resulting curve should approximate Zipf's Law, which states that the frequency of a term is inversely proportional to its rank in the frequency distribution. Estimate the number of terms required to cover a certain proportion of the total frequency. This can be done using methods such as Heaps' Law, which relates the size of the vocabulary to the total number of words in the dataset.
+
+Estimate the posting size: The posting size for each term is equal to the number of documents in which the term appears, multiplied by the number of bytes required to represent a document identifier and term frequency. To estimate the average number of documents per term, divide the total number of documents in the dataset by the vocabulary size estimated in step 4. To estimate the average number of bytes per posting, we can use a heuristic such as assuming that each document identifier requires 4 bytes and each term frequency requires 2 bytes.
+
+If it is known that the dataset is a collection of English short stories, we can use domain knowledge to justify the estimates. For example, we can expect the vocabulary size to be smaller than that of a general text corpus, as short stories typically use a narrower range of vocabulary. We can also expect the posting size to be smaller than that of a web document corpus, as short stories are typically shorter in length and contain fewer distinct terms per document. However, it is important to validate the estimates using empirical analysis of the dataset.
+

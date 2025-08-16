@@ -1,0 +1,22 @@
+Q1. How do you define Probabilistic Information Retrieval Model? How it is better than vector space model?
+Ans. The Probabilistic Information Retrieval Model (PIRM) is a framework for information retrieval that uses probabilistic principles to estimate the probability that a given document is relevant to a given query. 
+One of the advantages of PIRM over the Vector Space Model (VSM) is that it takes into account the frequency of query terms within each relevant document. The VSM only considers the presence or absence of query terms, while PIRM considers the frequency of query terms in each document. Additionally, PIRM addresses some of the limitations of VSM, such as the lack of a probabilistic interpretation of relevance and the inability to distinguish between different types of query terms.
+
+Q2. . Define the Probability relevance ranking? Explain what are its assumptions?
+Ans. Probability relevance ranking is a class of information retrieval models that uses a probabilistic approach to rank documents based on their relevance to a query. The main idea behind probability relevance ranking is to estimate the probability that a given document is relevant to a given query
+The Probability relevance ranking model assumes that:
+1. The relevance of a document to a query is a probabilistic function of the query and the document.
+2. Each query term contributes independently to the relevance of a document.
+3. The relevance of a document to a query can be modeled as a probability distribution over the possible relevance values.
+
+Q3. Define Binary Independence Model? Explain what are its assumptions?
+Ans. The Binary Independence Model (BIM) is a probabilistic information retrieval model that is based on the assumption that each query term and document term is binary, i.e., it is either present or absent in the document. The model assumes that the presence or absence of each term in the query and document is independent of the presence or absence of all other terms, hence the term "independence".
+The main assumptions of the BIM are:
+1. Each document is represented as a set of binary indicators, where each indicator represents the presence or absence of a term in the document.
+2. The relevance of a document to a query is determined by the presence or absence of the query terms in the document.
+3. The presence or absence of each query term is independent of the presence or absence of all other query terms.
+
+Q4. 
+
+
+

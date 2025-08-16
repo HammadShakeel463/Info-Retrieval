@@ -1,0 +1,93 @@
+1. What is the common scheme for evaluation of information retrieval experiments? explain. 
+Ans. The common scheme for evaluation of information retrieval experiments involves using metrics such as precision, recall, F-measure, MAP, NDCG, precision-recall curve, and ROC curve to measure the effectiveness of a search algorithm in retrieving relevant information from a collection of documents, given a query from a user. These metrics are used to compare different algorithms and tune their parameters for better performance.
+
+2. What is the relationship between the value of F1 and the break-even point? 
+Ans. The break-even point is the point on the precision-recall curve where the precision and recall are equal. The F1 score is the harmonic mean of precision and recall, which is used to balance the trade-off between precision and recall.
+The F1 score is maximized when precision and recall are both high, which typically occurs at a point on the precision-recall curve that is close to the break-even point. In other words, the F1 score is highest when the precision and recall are balanced, which is near the point where the precision and recall are equal.
+Therefore, the relationship between the value of F1 and the break-even point is that the F1 score is maximized at or near the break-even point on the precision-recall curve, where the precision and recall are equal.
+
+3. Consider an information need for which there are 4 relevant documents in the
+collection.
+Contrast two systems run on this collection. Their top 10 results are judged for
+relevance as follows (the leftmost item is the top ranked search result):
+System 1 R N R N N N N N R R
+System 2 N R N N R R R N N N
+a. What is the MAP of each system? Which has a higher MAP?
+b. Does this result intuitively make sense? What does it say about what is
+important in getting a good MAP score?
+c. What is the R-precision of each system? (Does it rank the systems the same as
+MAP?)
+
+Ans. a. To calculate the MAP of each system, we need to first calculate the Precision at each rank and then take the average of the Precision values at the ranks where relevant documents were retrieved. The value of k, which is the rank of the last relevant document, is 4 in this case.
+For System 1:
+P@1 = 1/1 = 1.0
+P@2 = 1/2 = 0.5
+P@3 = 2/3 = 0.67
+P@4 = 2/4 = 0.5
+AP = (1.0 + 0.5 + 0.67 + 0.5) / 4 = 0.67
+For System 2:
+P@1 = 0/1 = 0
+P@2 = 1/2 = 0.5
+P@3 = 1/3 = 0.33
+P@4 = 1/4 = 0.25
+AP = (0 + 0.5 + 0.33 + 0.25) / 4 = 0.27
+Therefore, System 1 has a higher MAP value of 0.67 compared to System 2 with a MAP value of 0.27.
+
+b. The result makes sense intuitively as System 1 retrieves more relevant documents in its top 10 results, and the relevant documents are ranked higher compared to System 2. This shows that in information retrieval, it is not just important to retrieve relevant documents, but also to rank them higher.
+
+c. R-Precision is the Precision value when the number of retrieved documents is equal to the number of relevant documents for a query. In this case, since there are four relevant documents, we need to consider the Precision value at rank 4.
+For System 1, Precision at rank 4 = 2/4 = 0.5
+For System 2, Precision at rank 4 = 1/4 = 0.25
+Therefore, System 1 has a higher R-Precision of 0.5 compared to System 2 with an R-Precision of 0.25. The order of ranking of systems is the same for both MAP and R-Precision.
+
+4. The balanced F measure (a.k.a. F1) is defined as the harmonic mean of precision and recall. What is the advantage of using the harmonic mean rather than “averaging” (using the arithmetic mean)? 
+
+Ans. The harmonic mean is a better measure than the arithmetic mean when dealing with ratios or rates, such as precision and recall in information retrieval. This is because the harmonic mean is less sensitive to extreme values or outliers, compared to the arithmetic mean.
+
+In the case of precision and recall, there may be situations where one of the values is very high and the other is very low. If we simply average these two values using the arithmetic mean, we will get a misleading result that does not accurately represent the performance of the system. On the other hand, the harmonic mean takes both values into account and gives a more balanced measure of their performance.
+
+In summary, the advantage of using the harmonic mean (F1 measure) over the arithmetic mean is that it provides a more robust and accurate measure of the performance of a system when dealing with ratios or rates, such as precision and recall.
+
+5. What is Fall-out for a system? when it is good to evaluate with this measure? 
+
+Ans. Fall-out, or the false positive rate, is a measure of a system's ability to retrieve only relevant documents and avoid irrelevant ones. This measure is particularly useful in settings where retrieving irrelevant documents could have serious consequences, such as in legal or medical contexts. Additionally, fall-out is important when dealing with imbalanced datasets where there are many more irrelevant documents than relevant ones, as it ensures that the system is not biased towards retrieving irrelevant documents.
+
+6. Why evaluation of ranked retrieval is more challenging? 
+
+Ans. Evaluation of ranked retrieval is more challenging than evaluation of unranked retrieval because the quality of a ranked list of retrieved documents cannot be fully captured by simple measures like precision and recall. In ranked retrieval, the order of the results matters, so more sophisticated measures like MAP, DCG, and NDCG are required to evaluate the performance of a ranked retrieval system. These measures consider both the relevance and the ranking order of the retrieved documents to provide a more comprehensive evaluation of the system's performance.
+
+7. What are some of the drawbacks of cumulative gain?
+Ans. 1. CG does not account for the ranking position of each relevant document, which can be important in assessing the quality of the retrieval system.
+2. CG gives equal weight to all relevant documents, regardless of their importance or relevance to the user. In reality, some relevant documents may be more important or useful than others, and the retrieval system should prioritize these.
+3. CG assumes that all relevant documents are equally relevant, whereas in reality, some relevant documents may be more relevant to the user than others.
+4. CG does not consider the number of irrelevant documents that are retrieved, which can be important in evaluating the system's overall performance.
+
+8. How Normalized Discount Cumulative Gain (NDGC) overcome all the drawbacks of a ranked retrieval? Explain.
+
+Ans. Normalized Discounted Cumulative Gain (NDCG) is a measure used to evaluate the effectiveness of a ranked retrieval system. Some of the ways that NDCG overcomes the drawbacks of Cumulative Gain (CG) are:
+
+1. Accounting for relevance and ranking position: NDCG considers both the relevance of a document and its position in the ranking when calculating the score. This means that more relevant documents that appear higher in the ranking will have a greater impact on the overall score.
+2. Normalizing the score: NDCG normalizes the score by dividing the Discounted Cumulative Gain (DCG) by the ideal DCG score. This helps to account for the fact that different sets of relevant documents may have different maximum DCG scores.
+3. Penalizing for irrelevant documents: NDCG penalizes the score for irrelevant documents, which means that irrelevant documents will have a negative impact on the overall score. This ensures that the system is penalized for retrieving irrelevant documents, which is important for real-world applications where irrelevant documents can harm the user's experience.
+
+
+9. What is so good about A/B Testing for IR systems? Discuss it use as an instrument for improving IR systems.  
+
+Ans. A/B testing is a powerful technique for evaluating and improving information retrieval (IR) systems. Here are some of its benefits and uses:
+1. Objective evaluation: A/B testing provides an objective way to compare two or more IR systems or versions of the same system. By randomly assigning users to different versions and measuring their performance, we can determine which version performs better in terms of user satisfaction or other relevant metrics.
+2. Iterative improvement: A/B testing allows us to iterate and improve IR systems over time. By testing different versions of a system and analyzing user feedback, we can identify areas for improvement and make iterative changes to the system.
+3. Cost-effective: A/B testing can be a cost-effective way to evaluate and improve IR systems. Rather than relying on expensive user studies or expert evaluations, we can collect data from real users in a real-world setting.
+Overall, A/B testing is a powerful tool for improving the effectiveness and usability of IR systems. It allows us to make data-driven decisions about system design and continuously improve the user experience.
+
+10. Differentiate between dynamic summaries and static summaries over search
+results snippets.
+Ans. Dynamic summaries and static summaries are two different ways of presenting search result snippets to the user. Here are three key differences between them:
+
+1. Dynamic summaries are generated in real-time based on the user's query and their interactions with the search results, while static summaries are pre-computed and shown to the user without any additional processing.
+2. Dynamic summaries can be personalized to each user, taking into account their search history and preferences, while static summaries are the same for all users and all queries.
+3. Dynamic summaries can be more interactive, allowing the user to expand or collapse sections of the summary or see more detailed information, while static summaries are usually limited to a fixed length and format.
+
+
+
+
+

@@ -1,0 +1,41 @@
+1. CONTIGUITY HYPOTHESIS : The basic hypothesis in using the vector space model for classification is the contiguity hypothesis. Contiguity hypothesis. Documents in the same class form a contiguous region and regions of different classes do not overlap
+
+2. Rocchio classification divides the vector space into regions centered on centroids or prototypes, one for each class, computed as the center of mass of all documents in the class
+kNN or k nearest neighbor classification  assigns the majority class of the k nearest neighbors to a test document. kNN requires no explicit training and can use the unprocessed training set directly in classification
+
+3. When applying two-class classifiers to problems with more than two classes, there are one-of tasks – a document must be assigned to exactly one of several mutually exclusive classes – and any-of tasks – a document can be assigned to any number of classes
+
+4. Perhaps the best-known way of computing good class boundaries is Rocchio classification, which uses centroids to define the boundaries. The centroid of a class c is computed as the vector average or center of mass of its members:
+
+5. In addition to respecting contiguity, the classes in Rocchio classification must be approximate spheres with similar radii.Two-class classification is another case where classes are rarely distributed like spheres with similar radii
+
+6. Unlike Rocchio, k nearest neighbor or kNN classification determines the decision boundary locally. For 1NN we assign each document to the class of its closest neighbor. For kNN we assign each document to the majority class of its k closest neighbors where k is a parameter. The rationale of kNN classification is that, based on the contiguity hypothesis, we expect a test document d to have the same label as the training documents located in the local region surrounding d.
+
+7. Decision boundaries in 1NN are concatenated segments of the Voronoi tessellation. The Voronoi tessellation of a set of objects decomposes space into Voronoi cells, where each object’s cell consists of all points that are closer to the object than to other objects.
+
+8. kNN simply memorizes all examples in the training set and then compares the test document to them. For this reason, kNN is also called memory-based learning or instance-based learning. It is usually desirable to have as much training data as possible in machine learning. But in kNN large training sets come with a severe efficiency penalty in classification
+
+9.  We call a hyperplane that we use as a linear classifier a decision hyperplane
+
+10. As is typical in text classification, there are some noise documents that do not fit well into the overall distribution of the classes.
+we defined a noise feature as a misleading feature that, when included in the document representation, on average increases the classification error. Analogously, a noise document is a document that, when included in the training set, misleads the learning method and increases classification error
+
+11. If there exists a hyperplane that perfectly separates the two classes, then we call the two classes linearly separable.
+
+12. Classification for classes that are not mutually exclusive is called any-of, multilabel, or multivalue classification
+
+13. The second type of classification with more than two classes is one-of classification. Here, the classes are mutually exclusive. One-of classification is also called multinomial, polytomous , multiclass, or single-label classification.
+
+14. An important tool for analyzing the performance of a classifier for J > 2 classes is the confusion matrix. The confusion matrix shows for each pair of classes (c1, c2), how many documents from c1 were incorrectly assigned to c2.
+
+15. Variance is the variation of the prediction of learned classifiers: the average squared difference between ΓD(d) and its average EDΓD(d). Variance is large if different training sets D give rise to very different classifiers ΓD. It is small if the training set has a minor effect on the classification decisions ΓD makes, be they correct or incorrect. Variance measures how inconsistent the decisions are, not whether they are correct or incorrect.
+
+16. we have to weigh the respective merits of bias and variance in our application and choose accordingly. This tradeoff is called the bias variance tradeoff.
+
+17. Routing merely ranks documents according to relevance to a class without assigning them. Early work on filtering, a true classification approach that makes an assignment decision on each document
+
+18.  Routing can also refer to the electronic distribution of documents to subscribers, the so-called push model of document distribution. In a pull model, each transfer of a document to the user is initiated by the user – for example, by means of search or by selecting it from a list of documents on a news aggregation website.
+
+
+
+

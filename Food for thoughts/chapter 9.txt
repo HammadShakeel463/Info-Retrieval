@@ -1,0 +1,80 @@
+1. What do we mean by relevance feedback? What is it procedure? 
+explain briefly
+Ans. Relevance feedback is a process in information retrieval that allows users to provide feedback on the relevance of search results in order to refine future search results. The procedure typically involves the following steps:
+
+1. The user enters a query and the system retrieves a set of documents.
+2. The user examines the retrieved documents and provides feedback on their relevance.
+Based on the user feedback, the system re-ranks the documents and presents a new set of results.
+3. The process may be repeated iteratively, with the user providing feedback on the new set of results until they are satisfied with the relevance of the results.
+
+Relevance feedback can be classified into two types: explicit and implicit. Explicit relevance feedback is when the user explicitly indicates which documents are relevant or not, while implicit relevance feedback is when the system infers relevance based on user behavior, such as which documents were clicked or how long they were viewed
+
+2. Give three reasons why relevance feedback has been little used in web search 
+Ans. There are several reasons why relevance feedback has been little used in web search:
+
+1. User Interaction: Relevance feedback requires user interaction, which may be perceived as cumbersome or time-consuming. In web search, users often want quick and effortless access to information, and may not be willing to spend time providing feedback.
+
+2. Scale: The web is vast and constantly evolving, making it difficult to maintain an up-to-date model of user feedback. There may be too much data to effectively use relevance feedback at scale, especially given the dynamic nature of the web.
+
+3. Diversity of Users: Users have diverse information needs and may interact with search engines in different ways. This makes it challenging to build a relevant and accurate model of user feedback that can be used to improve search results for all users.
+
+3. What do we mean by Pseudo relevance feedback? Give example.
+Ans. Pseudo relevance feedback is a technique used in information retrieval to improve the search results by providing additional information to the system based on the user's query. In this technique, the system assumes that the top retrieved documents are relevant to the user's query and uses them to reformulate the query and retrieve more relevant documents.
+Here is an example of how pseudo relevance feedback works:
+
+1. The user enters a query "computer science degree online"
+2. The search engine retrieves the top 10 documents based on the query
+3. The system assumes that the top 3 documents are relevant to the user's query and 4. extracts important terms and phrases from them
+5. The system then reformulates the user's query to include these terms and phrases and retrieves more relevant documents based on the new query
+The pseudo relevance feedback technique helps to refine the user's query and retrieve more relevant documents, which can improve the overall search experience.
+
+Q4. Suppose that a user’s initial query is "cheap CDs cheap DVDs extremely cheap CDs". The user examines two documents, d1 and d2. She judges d1, with the content "CDs cheap software cheap CDs relevant" and d2 with content "cheap thrills DVDs" non relevant. Assume that we are using direct term frequency (with no scaling and no document frequency). There is no need to length-normalize vectors. Using Rocchio relevance feedback, what would the revised query vector be after relevance feedback? Assume α = 1, β = 0.75, γ = 0.25. 
+
+Ans.
+Query is: Cheap CDs cheap DVDs extremely cheap CDs
+Relevance document(d1)is: CDs cheap software cheap CDs
+Irrelevancedocument (d2) is: cheap thrills DVDs
+termsare:(cheap , CDs , DVDs , extremely , software , thrills)
+So
+q(3,2,1,1,0,0)
+d1(2,2,0,0,1,0)
+d2(1,0,1,0,0,1)
+Known α= 1、β= 0.75、γ= 0.25
+So 
+qm= q + 0.75 * d1–0.25 * d2 = (4.25, , 3.5, 0.75 , 1, 0.75 , 0)
+Negative weights are set to 0.
+
+Q5. What is a query expansion? Why it is a costly phenomena? 
+Ans. Query expansion is a technique used in information retrieval to improve the relevance of search results. It involves adding additional terms or concepts to a user's original query to retrieve more relevant documents. The additional terms can be synonyms, related terms, or other concepts that are semantically similar to the original query terms.
+query expansion can be a costly phenomenon for several reasons. 
+1. First, it requires additional computational resources to process and analyze the expanded query.
+2. Second, the expansion of the query can also lead to the retrieval of more irrelevant documents, which can negatively impact the precision of the search results. 
+3. Finally, query expansion can also require additional human effort to validate and refine the expanded query.
+
+Q6. What is a general approach to give a global relevance feedback? Give an example
+Ans. The general approach to give a global relevance feedback involves using the feedback from multiple users or experts to improve the relevance of search results. 
+An example of global relevance feedback is the TREC (Text Retrieval Conference) Relevance Feedback track, which is a benchmarking initiative that involves collecting feedback from multiple users to improve the performance of information retrieval systems.
+
+Q7. Does negative feedback is of any importance in web-search? Explain. 
+Ans. Yes, negative feedback can be important in web search as it provides information about the relevance of search results that are not relevant or useful to the user's information needs. Negative feedback, such as explicit downvotes, can help search engines to identify and filter out low-quality or irrelevant content from search results, thereby improving the overall quality and relevance of search results.
+
+Negative feedback can be used in various ways in web search, such as:
+1. Filtering out low-quality content
+2. Improving relevance algorithms
+3. Providing feedback to content providers
+
+Q8. What are some of the problems of search engine on which relevance feedback effective? Outline them. 
+Ans.  It can be particularly effective in addressing some of the common problems of search engines, such as:
+1. Vocabulary mismatch
+2. Ambiguity
+3. Noise and spam
+4. Personalization
+5. Diversity: Search results can be biased towards popular or mainstream content, and may not reflect the diversity of perspectives and opinions
+
+Q9.  What are the assumptions for Rocchio algorithms for relevance feedback? Why these assumptions are not correct? Explain
+Ans.  the algorithm relies on certain assumptions that may not always hold true in practice. Some of the main assumptions of the Rocchio algorithm are:
+1. Linear separability: in practice, this assumption may not always hold true, especially in cases where the relevant and non-relevant documents have similar features or are highly overlapping.
+2. Additivity:  in practice, the feedback from different documents may not always be additive, and the impact of each document on the query vector may vary depending on the context and the user's preferences
+3. Symmetry: in practice, the impact of feedback from relevant and non-relevant documents may be asymmetric, depending on the context and the user's preferences.
+
+

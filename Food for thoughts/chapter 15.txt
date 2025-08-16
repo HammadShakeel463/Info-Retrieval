@@ -1,0 +1,20 @@
+1. the distance from the decision surface to the closest data point determines the margin of the classifier.
+
+2. the decision function for an SVM is fully specified by a (usually small) subset of the data which defines the position of the separator. These points are referred to as the support vectors (in a vector space, a point can be thought of as a vector between the origin and that point).
+
+3. The geometric margin of the classifier is the maximum width of the band thatcan be drawn separating the support vectors of the two classes. That is, it is twice the minimum value over data points for r
+
+4. Quadratic optimization problems are a standard, well-known class of mathematical optimization problems, and many algorithms exist for solving them
+
+4. The parameter C is a regularization term, which provides a way to control overfitting: as C becomes large, it is unattractive to not respect the data at the cost of reducing the geometric margin; when it is small, it is easy to account for some data points with the use of slack variables and to have a fat margin placed so it models the bulk of the data.
+
+5. Kernel functions are sometimes more precisely referred to as Mercer kernels, because they must satisfy Mercer’s condition.
+
+6. Most large sets of categories have a hierarchical structure, and attempting to exploit the hierarchy by doing hierarchical classification is a promising approach.
+
+
+
+
+
+
+

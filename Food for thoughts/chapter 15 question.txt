@@ -1,0 +1,11 @@
+Qno15.1: What is the minimum number of support vectors that there can be for a data set (which contains instances of each class)?
+Ans: In a binary classification problem where a data set contains instances of each class, the minimum number of support vectors can be 1.
+
+Q15.2: The basis of being able to use kernels in SVMs (see Section 15.2.3) is that the classification function can be written in the form of Equation(where, for large problems, most α௜ are 0). Show explicitly how the classification function could be written in this form for the data set from Example 15.1. That is, write f as a function where the data points appear and the only variable is x. 
+Ans. See homework
+
+Q15.3: 
+
+
+
+

@@ -1,0 +1,87 @@
+Qno1: Explain what we mean by document processing pipeline for IR system. 
+
+A document processing pipeline for an information retrieval (IR) system is a sequence of steps that transform raw documents into a form suitable for indexing and searching. The pipeline typically includes steps such as document acquisition, parsing, text normalization, term extraction, indexing, and query processing. The goal of the pipeline is to accurately represent the content of the documents so that relevant information is not lost and the index reflects the content of the documents.
+
+Qno2: What are the two main morphological transformation for English language? 
+
+The two main morphological transformations for the English language are stemming and lemmatization.
+Stemming: Stemming is a process of reducing words to their base form, also known as the root form. The goal of stemming is to group together words with the same root so that they can be treated as the same term in the index. For example, the words "running," "runner," and "ran" would all be reduced to the root form "run."
+
+Lemmatization: Lemmatization is a more sophisticated form of morphological transformation that reduces words to their base form, called the lemma. Unlike stemming, lemmatization takes into account the context of a word and the morphological structure of the language to determine the correct base form. For example, the word "running" would be reduced to "run" (the root form), while the word "was" would be reduced to "be" (the base form).
+
+Qno3: What are the challenges in Document Processing? Explain each with an example. 
+
+Document format diversity
+Text normalization
+Term extraction
+Indexing
+Query processing:
+An example of a challenge in document processing is handling text in different languages. For instance, if a document collection contains documents in multiple languages, it can be difficult to accurately process and represent the text, as text normalization and term extraction may need to be performed differently for each language. Another example of a challenge is dealing with noisy or inconsistent data, such as typos, misspellings, or incomplete information in the documents, which can make it difficult to extract meaningful information from the documents.
+
+Qno4: Differentiate between Stemming and Lemmatization of a natural language token(word). 
+
+Stemming is a process of reducing a word to its root form by removing any suffixes, such as -s, -es, -ing, -ly, etc.Lemmatization, on the other hand, is the process of reducing a word to its base or dictionary form, called a lemma.
+The resulting stem may not be an actual word, but it is still used to group words with similar meanings.nlike stemming, lemmatization takes into account the context and part of speech (POS) of the word. 
+While stemming is a simpler and faster process than lemmatization, it may not always produce accurate results since it only applies a set of rules to remove suffixes, without considering the context of the word. Lemmatization is a more accurate process since it uses a dictionary-based approach to identify the base form of a word, but it is more computationally intensive than stemming.
+Qno5:
+a. Using standard postings lists:
+To intersect the two postings lists, we need to compare each entry in the first postings list with the entry in the second postings list. Since the first postings list has 16 entries and the second postings list has only 1 entry, we would need to make 16 comparisons in total.
+b. Using postings lists stored with skip pointers:
+In this case, the first postings list would be divided into blocks of size √P, where P is the number of entries in the postings list. The first entry in each block would be stored, along with a skip pointer to the next block. To intersect the two postings lists, we would start from the first entry in the first postings list and follow the skip pointers until we reach a block that contains an entry that is greater than or equal to the entry in the second postings list (47).
+
+Since the first postings list has 16 entries, we would need to make log2(16) = 4 comparisons to find the block that contains the first entry that is greater than or equal to 47. After finding the block, we would then make a linear scan through the remaining entries in the block, making at most √P comparisons. Since √P = 4, we would make at most 4 comparisons.
+
+In total, using postings lists stored with skip pointers, we would need to make 4 + 4 = 8 comparisons to intersect the two postings lists, which is significantly fewer comparisons than with standard postings lists.
+
+Qno6: What do we mean by extended bi-words? How it is useful?
+Extended bi-words are a type of indexing technique used in information retrieval systems to capture the co-occurrence of multiple words in a document. Unlike traditional bi-words, which only capture the co-occurrence of two adjacent words in a document, extended bi-words capture the co-occurrence of more than two words.
+
+The extended bi-words approach is useful because it allows the information retrieval system to better capture the context of the query terms and improve the accuracy of the retrieval results. By capturing the co-occurrence of multiple words, extended bi-words can provide a more comprehensive representation of the content of a document, which can help to better match the query with relevant documents.
+
+For example, consider the query "machine learning algorithms." A traditional bi-word index would only capture the co-occurrence of "machine" and "learning" or "learning" and "algorithms." However, an extended bi-word index would capture the co-occurrence of all three terms, allowing the information retrieval system to better match documents that contain all three terms, rather than just two of the terms.
+
+Qno7: How positional indexing support phrase and proximity queries? Explain each with an example. 
+
+Positional indexing is a technique used in information retrieval systems to keep track of the positions of terms within a document. This information can be used to support phrase and proximity queries.
+
+Phrase Queries:
+A phrase query is a query that specifies multiple terms that must appear in a specific order within a document. For example, a phrase query for "machine learning algorithms" would only match documents that contain the words "machine", "learning", and "algorithms" in that specific order.
+
+Positional indexing can support phrase queries by keeping track of the positions of each term within a document. When a phrase query is received, the information retrieval system can use the positional information to determine whether the terms in the query appear in the correct order within the document.
+
+For example, consider the following document:
+"Machine learning algorithms are becoming increasingly popular for solving complex problems."
+
+A positional index for this document might look like this:
+
+{
+"machine": [1],
+"learning": [2],
+"algorithms": [3],
+}
+
+When a phrase query for "machine learning algorithms" is received, the information retrieval system can use the positional information to determine that the terms in the query appear in the correct order within the document, and therefore, match the document to the query.
+
+Proximity Queries:
+A proximity query is a query that specifies multiple terms that must appear within a certain distance of each other within a document. For example, a proximity query for "machine learning" within 5 words would match documents that contain the words "machine" and "learning" within 5 positions of each other.
+
+Positional indexing can support proximity queries by keeping track of the positions of each term within a document. When a proximity query is received, the information retrieval system can use the positional information to determine whether the terms in the query appear within the specified distance of each other within the document.
+
+For example, consider the following document:
+"Machine learning algorithms are becoming increasingly popular for solving complex problems."
+
+A positional index for this document might look like this:
+
+{
+"machine": [1],
+"learning": [2],
+"algorithms": [3],
+}
+
+When a proximity query for "machine learning" within 5 words is received, the information retrieval system can use the positional information to determine that the terms "machine" and "learning" are within 5 positions of each other within the document, and therefore, match the document to the query.
+
+Qno 8 How a combination of bi-word indexing and positional indexing benefits an IR system? 
+Bi-word indexing is a technique that involves breaking down text documents into pairs of adjacent words, also known as bi-grams.Positional indexing, on the other hand, is a technique that takes into account the position of the words in the document, in addition to the frequency of occurrence.
+When these two techniques are combined, the resulting index is called a bi-word positional index. This index captures the co-occurrence of adjacent words and their position in the document, which can help in identifying relevant documents more accurately.
+bi-word indexing can help in reducing the vocabulary size, as it breaks down text into smaller units, which can help in reducing the sparsity of the document-term matrix. 
+The main benefit of a bi-word positional index is that it can capture the semantics of the text more effectively than traditional indexing methods, which only consider individual words. This is because the index can capture the relationships between adjacent words and their context in the document, which can be useful in identifying relevant documents that contain the same or similar phrases.
