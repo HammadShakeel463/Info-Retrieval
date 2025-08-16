@@ -1,0 +1,186 @@
+# import json
+# from nltk.sentiment import SentimentIntensityAnalyzer
+# from textblob import TextBlob
+
+# data = []  # List to store the collected data
+
+# # Open the file and read line by line
+# with open('./Sarcasm_Headlines_Dataset.json', 'r') as file:
+#     for line in file:
+#         try:
+#             tweet = json.loads(line)
+#             # Extract the relevant fields (headline and is_sarcastic)
+#             headline = tweet['headline']
+#             is_sarcastic = tweet['is_sarcastic']
+            
+#             # Add the extracted data as a tuple to the data list
+#             data.append((headline, is_sarcastic))
+#         except json.JSONDecodeError:
+#             # Handle JSON decoding errors
+#             print('JSON decoding error:', line)
+#             continue
+
+# # Print the collected data
+# i = 0
+# for headline, is_sarcastic in data:
+#     if i == 10 :
+#         break ;
+#     print('Headline:', headline)
+#     print('Is Sarcastic:', is_sarcastic)
+#     print('--------------------')
+#     i += 1 
+# i = 0
+# # Perform sentiment analysis on each tweet
+# for headline, is_sarcastic in data:
+#     if i == 10 :
+#         break ;
+#     # Create a TextBlob object
+#     blob = TextBlob(headline)
+    
+#     # Get the sentiment polarity
+#     polarity = blob.sentiment.polarity
+    
+#     # Determine the sentiment label based on polarity
+#     if polarity > 0:
+#         sentiment = 'Positive'
+#     elif polarity < 0:
+#         sentiment = 'Negative'
+#     else:
+#         sentiment = 'Neutral'
+    
+#     # Print the sentiment analysis results
+#     print('Headline:', headline)
+#     print('Sentiment:', sentiment)
+#     print('Polarity:', polarity)
+#     print('--------------------')
+#     i += 1
+# import json
+# from nltk.sentiment import SentimentIntensityAnalyzer
+# from textblob import TextBlob
+# from nltk.corpus import sentiwordnet as swn
+# import nltk
+# from nltk.tokenize import sent_tokenize
+
+# nltk.download('wordnet')
+# nltk.download('sentiwordnet')
+# data = []  # List to store the collected data
+# X = []
+# y = []
+# # Open the file and read line by line
+# with open('./Sarcasm_Headlines_Dataset.json', 'r') as file:
+#     for line in file:
+#         try:
+#             tweet = json.loads(line)
+#             # Extract the relevant fields (headline and is_sarcastic)
+#             headline = tweet['headline']
+#             is_sarcastic = tweet['is_sarcastic']
+            
+#             # Add the extracted data as a tuple to the data list
+#             data.append((headline, is_sarcastic))
+#         except json.JSONDecodeError:
+#             # Handle JSON decoding errors
+#             print('JSON decoding error:', line)
+#             continue
+
+# # Print the collected data
+# i = 0
+# for headline, is_sarcastic in data:
+#     if i == 10 :
+#         break ;
+#     print('Headline:', headline)
+#     print('Is Sarcastic:', is_sarcastic)
+#     print('--------------------')
+#     i += 1 
+# i = 0
+# # Perform sentiment analysis on each tweet
+# for headline, is_sarcastic in data:
+    
+#     # Create a TextBlob object
+#     blob = TextBlob(headline)
+    
+#     # Get the sentiment polarity
+#     polarity = blob.sentiment.polarity
+    
+#     # Determine the sentiment label based on polarity
+#     if polarity > 0:
+#         sentiment = 'Positive'
+#     elif polarity < 0:
+#         sentiment = 'Negative'
+#     else:
+#         sentiment = 'Neutral'
+    
+#     if i <  10 :
+
+#         print('Headline:', headline)
+#         print('Sentiment:', sentiment)
+#         print('Polarity:', polarity)
+#         print('--------------------')
+
+#     # Perform common-sense knowledge expansion using SentiWordNet
+#     expanded_polarity = polarity
+#     for word in blob.words:
+#         pos_score = 0
+#         neg_score = 0
+#         synsets = list(swn.senti_synsets(word))
+#         if synsets:
+#             for synset in synsets:
+#                 pos_score += synset.pos_score()
+#                 neg_score += synset.neg_score()
+        
+#         # Adjust the polarity based on the expanded sentiment scores
+#         expanded_polarity += pos_score - neg_score
+    
+#     # Determine the final sentiment label based on adjusted polarity
+#     if expanded_polarity > 0:
+#         sentiment = 'Positive'
+#     elif expanded_polarity < 0:
+#         sentiment = 'Negative'
+#     else:
+#         sentiment = 'Neutral'
+    
+#     # Print the sentiment analysis results
+#     if i < 10 :
+
+#         print('Headline:', headline)
+#         print('Sentiment:', sentiment)
+#         print('Polarity:', expanded_polarity)
+#         print('--------------------')
+#     i += 1
+#     if i == 10:
+#         break
+# print(i)
+# # ...
+# i = 0
+# # Perform sentiment analysis on each sentence within a tweet
+# for headline, is_sarcastic in data:
+#     # Create a TextBlob object
+#     blob = TextBlob(headline)
+    
+#     # Split the headline into sentences
+#     sentences = sent_tokenize(headline)
+    
+#     # Perform sentiment analysis on each sentence
+#     sentence_sentiments = []
+#     for sentence in sentences:
+#         sentence_blob = TextBlob(sentence)
+#         sentence_polarity = sentence_blob.sentiment.polarity
+#         sentence_sentiments.append(sentence_polarity)
+    
+#     # Apply coherence rules and determine the overall sentiment
+#     overall_sentiment = 'Incoherent' if any(sentiment != sentence_sentiments[0] for sentiment in sentence_sentiments) else sentiment
+#     # Construct the feature vector
+#     feature_vector = [polarity, expanded_polarity] + sentence_sentiments
+
+#     X.append(feature_vector)
+#     y.append(is_sarcastic)
+    
+#     # Print the sentiment analysis results
+#     if i < 10:
+#         print('Headline:', headline)
+#         print('Overall Sentiment:', overall_sentiment)
+#         print('Feature Vector:', feature_vector)
+#         print('Sentiment Scores:', sentence_sentiments)
+#         print('--------------------')
+#     i += 1
+#     if i == 10:
+#         break 
